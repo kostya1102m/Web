@@ -1,0 +1,47 @@
+.wrapper {
+    background-color: lightgreen;
+    width: 60%;
+    margin: 0 auto;
+
+}
+
+.container {
+    width: 100%;
+    display: flex;
+}
+.left{
+    width: 66%;
+    overflow: hidden;
+
+}
+.right{
+    width: 33%;
+    overflow: hidden;
+
+}
+.long{
+    background-color: white;
+    margin: 5px;
+    padding: 5px;
+    overflow: hidden;
+    text-align: justify;
+    word-spacing: 20px;
+    text-align-last: right;
+
+}
+.nowordspace{
+    word-spacing: normal;
+}
+.short{
+    background-color: white;
+    margin: 5px;
+    padding: 5px;
+    overflow: hidden;
+}
+.container.second {
+    transform: scaleX(-1);
+    flex-direction: row-reverse;
+    transform: scaleY(1);
+}
+
+

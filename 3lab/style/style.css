@@ -1,0 +1,203 @@
+/* body {
+    margin: 0 10%;
+}
+.scroll-profile{
+    overflow-x: scroll;
+
+}
+div.scroll-profile > table{
+    border: 1px solid;
+}
+.scroll-profile img {
+    width: 200px;
+    height: 250px;
+}
+.profiles img {
+    width: 300px;
+    vertical-align: middle;
+
+}
+#quotes {
+    font-size: 1.4em;
+}
+.quotes-container
+{
+    display: block;
+    
+    justify-content: center;
+} */
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+header p {
+    text-align: center;
+}
+h1,
+h2 {
+    text-align: center;
+}
+.container{
+    width: 100%;
+    margin: 0 auto;
+    border: solid thin grey;
+}
+.search-field {
+    background-color: grey;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    text-align: center;
+}
+.search-field input {
+    width: 60%;
+    border: none;
+    outline: none;
+}
+
+.search-field [placeholder=""] {
+    text-align: center;
+    font-size: 12px;
+}
+
+.search-field img {
+    vertical-align: right;
+    width: 15px;
+    height: 15px;
+}
+
+.menu {
+    width: 100%;
+    margin: 0 auto;
+    background-color: pink;
+    margin-top: -16px;
+   
+}
+
+.menu ul {
+    text-align: right;
+}
+
+.menu li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+}
+
+.menu a:focus {
+    text-decoration: underline;
+}
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+.first {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.second {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.row div {
+    display: flex;
+    align-items: center;
+}
+
+h5 {
+    margin: 0 5px;
+}
+
+h4 {
+    margin-top: 16px;
+    margin-bottom: 10px;
+}
+
+.info {
+    width: 100%;
+    margin: 5px auto;
+    border-spacing: 10px;
+}
+
+.row td {
+    border: solid thin grey;
+    width: 33.33%;
+}
+
+.info img {
+    width: 25%;
+    height: 25%;
+}
+
+.bill {
+    width: 66.66%;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.mark {
+    width: 33.33%;
+    text-align: center;
+}
+.bill img {
+    width: 95%;
+    height: 120px;
+    margin-bottom: -15px;
+
+}
+
+.mark img {
+    width: 95%;
+    height: 120px;
+    margin-bottom: -15px;
+}
+
+/* .wrapper p::after {
+    margin: 0 auto;
+    content: '';
+    display: block;
+    width: 95%;
+    height: 0.5px;
+    background: grey;
+    margin-top: 1px;
+    margin-bottom: 10px;
+} */
+
+footer {
+    clear: both;
+    padding: 25px 0;
+    width: 100%;
+    margin: 0 auto;
+    border: solid thin grey;
+}
+
+.footer-left {
+    float: left;
+    padding: 0 0 0 10px;
+    font-size: 12px;
+    color: black;
+}
+
+.footer-right {
+    float: right;
+    padding: 0 10px 0 0;
+    font-size: 12px;
+    color: black;
+}
+.fisrt p{
+    font-size: 15px;
+}
+.second p{
+    font-size: 10px;
+    text-align: justify;
+    margin: 5px;
+}

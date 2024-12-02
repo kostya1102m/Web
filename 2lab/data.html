@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Данные о богатейших людях мира</title>
+</head>
+
+<body style="margin: 0% 10%;">
+    <header>
+        <h1>Данные о богатейших людях мира</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="data.html">Список самых богатых людей мира</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="filters">
+            <h2>Фильтры и сортировка</h2>
+
+            <details>
+                <summary>График</summary>
+
+                <table>
+                    <tr>
+                        <td>Значение по оси ОХ</td>
+                        <td align="center"> Результат</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="OX" value="1"> Индустрия<br>
+                            <input type="radio" name="OX" value="2"> Страна
+                        </td>
+                        <td>
+                            <input type="checkbox" name="res" value="1"> Максимальная стоимость активов<br>
+                            <input type="checkbox" name="res" value="2"> Минимальная стоимость активов
+                        </td>
+                    </tr>
+                </table>
+
+                <p><button id="build-graph">Построить</button></p>
+                <p>Здесь будет график</p>
+            </details>
+
+            <details>
+                <summary>Фильтр</summary>
+                <form id="filter-form">
+                    <p><label for="country">Страна:</label>
+                        <input type="text" id="country">
+
+
+                    <p><label for="industry">Индустрия:</label>
+                        <input type="text" id="industry">
+                    </p>
+
+                    <p><label for="source">Источник доходов:</label>
+                        <input type="text" id="source">
+                    </p>
+
+                    <p><label for="age-from">Возраст от:</label>
+                        <input type="number" min="31" max="95" id="age-from">
+                        <label for="age-to">до:</label>
+                        <input type="number" min="31" max="95" id="age-to"
+                            oninput="if (parseInt(this.value, 10) < parseInt(document.getElementById('age-from').value, 10)) { this.value = document.getElementById('age-from').value; }">
+                    </p>
+                    <p><label for="position-from">Позиция в Forbes от:</label>
+                        <input type="number" min="1" max="50" id="position-from">
+                        <label for="position-to">до:</label>
+                        <input type="number" min="1" max="50" id="position-to"
+                            oninput="if (parseInt(this.value, 10) < parseInt(document.getElementById('position-from').value, 10)) { this.value = document.getElementById('position-from').value; }">
+                    </p>
+                    <p><label for="assets-from">Активы от:</label>
+                        <input type="number" min="33" max="233" id="assets-from">
+                        <label for="assets-to">до:</label>
+                        <input type="number" min="33" max="233" id="assets-to"
+                            oninput="if (parseInt(this.value, 10) < parseInt(document.getElementById('assets-from').value, 10)) { this.value = document.getElementById('assets-from').value; }">
+                    </p>
+                </form>
+                <p><button id="filter-button">Найти</button></p>
+            </details>
+
+            <details>
+                <summary>Сортировка</summary>
+                <form id="sort-form">
+                    <p>Первый уровень:
+                        <select name="sort-level-1">
+                            <option value="0"> Нет </option>
+                            <option value="1">Имя</option>
+                            <option value="2">Стоимость чистых активов (млрд USD)</option>
+                            <option value="3">Возраст</option>
+                            <option value="4">Страна</option>
+                            <option value="5">Источник доходов</option>
+                            <option value="6">Индустрия</option>
+                            <option value="7">Позиция в Forbes</option>
+                        </select>
+                        по убыванию?
+                        <input type="checkbox" name="sort-level-1" value="desc">
+                    </p>
+
+                    <p>Второй уровень:
+                        <select name="sort-level-2">
+                            <option value="0"> Нет </option>
+                            <option value="1">Имя</option>
+                            <option value="2">Стоимость чистых активов (млрд USD)</option>
+                            <option value="3">Возраст</option>
+                            <option value="4">Страна</option>
+                            <option value="5">Источник доходов</option>
+                            <option value="6">Индустрия</option>
+                            <option value="7">Позиция в Forbes</option>
+                        </select>
+                        по убыванию?
+                        <input type="checkbox" name="sort-level-2" value="desc">
+                    </p>
+
+                    <p>Третий уровень:
+                        <select name="sort-level-3">
+                            <option value="0"> Нет </option>
+                            <option value="1">Имя</option>
+                            <option value="2">Стоимость чистых активов (млрд USD)</option>
+                            <option value="3">Возраст</option>
+                            <option value="4">Страна</option>
+                            <option value="5">Источник доходов</option>
+                            <option value="6">Индустрия</option>
+                            <option value="7">Позиция в Forbes</option>
+                        </select>
+                        по убыванию?
+                        <input type="checkbox" name="sort-level-3" value="desc">
+                    </p>
+                </form>
+                <p><button id="sort-button">Сортировать</button></p>
+            </details>
+        </section>
+
+        <section id="richest-people-table">
+            <h2>Список 50 самых богатых людей мира</h2>
+            <table border="1" cellpadding="10" cellspacing="1" align="center">
+                <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Стоимость чистых активов (млрд USD)</th>
+                        <th>Возраст</th>
+                        <th>Страна</th>
+                        <th>Источник доходов</th>
+                        <th>Индустрия</th>
+                        <th>Позиция в Forbes</th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <tr>
+                        <td>Bernard
+                            Arnault</td>
+                        <td>233</td>
+                        <td>75</td>
+                        <td>France</td>
+                        <td>LVMH</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Elon Musk</td>
+                        <td>195</td>
+                        <td>52</td>
+                        <td>United States</td>
+                        <td>Tesla, SpaceX</td>
+                        <td>Automotive</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Jeff Bezos</td>
+                        <td>194</td>
+                        <td>60</td>
+                        <td>United States</td>
+                        <td>Amazon</td>
+                        <td>Technology</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Mark
+                            Zuckerberg</td>
+                        <td>177</td>
+                        <td>39</td>
+                        <td>United States</td>
+                        <td>Facebook</td>
+                        <td>Technology</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Larry Ellison</td>
+                        <td>141</td>
+                        <td>79</td>
+                        <td>United States</td>
+                        <td>Oracle</td>
+                        <td>Technology</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Warren Buffett</td>
+                        <td>133</td>
+                        <td>93</td>
+                        <td>United States</td>
+                        <td>Berkshire
+                            Hathaway</td>
+                        <td>Finance &
+                            Investments</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>Bill Gates</td>
+                        <td>128</td>
+                        <td>68</td>
+                        <td>United States</td>
+                        <td>Microsoft</td>
+                        <td>Technology</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>Steve Ballmer</td>
+                        <td>121</td>
+                        <td>68</td>
+                        <td>United States</td>
+                        <td>Microsoft</td>
+                        <td>Technology</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>Mukesh Ambani</td>
+                        <td>116</td>
+                        <td>66</td>
+                        <td>India</td>
+                        <td>Diversified</td>
+                        <td>Diversified</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>Larry Page</td>
+                        <td>114</td>
+                        <td>51</td>
+                        <td>United States</td>
+                        <td>Google</td>
+                        <td>Technology</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Sergey Brin</td>
+                        <td>110</td>
+                        <td>50</td>
+                        <td>United States</td>
+                        <td>Google</td>
+                        <td>Technology</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>Michael Bloomberg</td>
+                        <td>106</td>
+                        <td>82</td>
+                        <td>United States</td>
+                        <td>Bloomberg LP</td>
+                        <td>Finance &
+                            Investments</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>Amancio Ortega</td>
+                        <td>103</td>
+                        <td>88</td>
+                        <td>Spain</td>
+                        <td>Zara</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>Carlos Slim
+                            Helu</td>
+                        <td>102</td>
+                        <td>84</td>
+                        <td>Mexico</td>
+                        <td>Telecom</td>
+                        <td>Telecom</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>Francoiseettencourt Meyers</td>
+                        <td>99.5</td>
+                        <td>70</td>
+                        <td>France</td>
+                        <td>L'Oréal</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Michael Dell</td>
+                        <td>91</td>
+                        <td>59</td>
+                        <td>United States</td>
+                        <td>Dell
+                            Technologies</td>
+                        <td>Technology</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td>Gautam Adani</td>
+                        <td>84</td>
+                        <td>61</td>
+                        <td>India</td>
+                        <td>Infrastructure, commodities</td>
+                        <td>Diversified</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>Jim Walton
+                        </td>
+                        <td>78.4</td>
+                        <td>75</td>
+                        <td>United States</td>
+                        <td>Walmart</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>Rob Walton
+                        </td>
+                        <td>77.4</td>
+                        <td>79</td>
+                        <td>United States</td>
+                        <td>Walmart</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>Jensen Huang</td>
+                        <td>77</td>
+                        <td>61</td>
+                        <td>United States</td>
+                        <td>Semiconductors</td>
+                        <td>Technology</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Alice Walton</td>
+                        <td>72.3</td>
+                        <td>74</td>
+                        <td>United States</td>
+                        <td>Walmart</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td>David Thomson
+                        </td>
+                        <td>67.8</td>
+                        <td>66</td>
+                        <td>Canada</td>
+                        <td>Media</td>
+                        <td>Media &
+                            Entertainment</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Julia Koch
+                        </td>
+                        <td>64.3</td>
+                        <td>61</td>
+                        <td>United States</td>
+                        <td>Koch
+                            Industries</td>
+                        <td>Diversified</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>Zhong Shanshan</td>
+                        <td>62.3</td>
+                        <td>69</td>
+                        <td>China</td>
+                        <td>Beverages,
+                            pharmaceuticals</td>
+                        <td>Food &everage</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>Charles Koch
+                        </td>
+                        <td>58.5</td>
+                        <td>88</td>
+                        <td>United States</td>
+                        <td>Koch
+                            Industries</td>
+                        <td>Diversified</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>Giovanni
+                            Ferrero</td>
+                        <td>43.8</td>
+                        <td>59</td>
+                        <td>Italy</td>
+                        <td>Nutella,
+                            chocolates</td>
+                        <td>Food &everage</td>
+                        <td>26</td>
+                    </tr>
+                    <tr>
+                        <td>Prajogo
+                            Pangestu</td>
+                        <td>43.4</td>
+                        <td>79</td>
+                        <td>Indonesia</td>
+                        <td>Petrochemicals, energy</td>
+                        <td>Diversified</td>
+                        <td>27</td>
+                    </tr>
+                    <tr>
+                        <td>Zhang Yiming</td>
+                        <td>43.4</td>
+                        <td>40</td>
+                        <td>China</td>
+                        <td>TikTok</td>
+                        <td>Technology</td>
+                        <td>27</td>
+                    </tr>
+                    <tr>
+                        <td>Tadashi Yanai
+                        </td>
+                        <td>42.8</td>
+                        <td>75</td>
+                        <td>Japan</td>
+                        <td>Fashion retail</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>29</td>
+                    </tr>
+                    <tr>
+                        <td>Phil Knight
+                        </td>
+                        <td>40.9</td>
+                        <td>86</td>
+                        <td>United States</td>
+                        <td>Nike</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Mark
+                            Mateschitz</td>
+                        <td>39.6</td>
+                        <td>31</td>
+                        <td>Austria</td>
+                        <td>Red Bull</td>
+                        <td>Food &everage</td>
+                        <td>31</td>
+                    </tr>
+                    <tr>
+                        <td>Klaus-Michael
+                            Kuehne</td>
+                        <td>39.2</td>
+                        <td>86</td>
+                        <td>Germany</td>
+                        <td>Shipping</td>
+                        <td>Logistics</td>
+                        <td>32</td>
+                    </tr>
+                    <tr>
+                        <td>Colin Huang</td>
+                        <td>38.9</td>
+                        <td>44</td>
+                        <td>China</td>
+                        <td>E-commerce</td>
+                        <td>Technology</td>
+                        <td>33</td>
+                    </tr>
+                    <tr>
+                        <td>Stephen
+                            Schwarzman</td>
+                        <td>38.8</td>
+                        <td>77</td>
+                        <td>United States</td>
+                        <td>Investments</td>
+                        <td>Finance &
+                            Investments</td>
+                        <td>34</td>
+                    </tr>
+                    <tr>
+                        <td>Jacqueline
+                            Mars</td>
+                        <td>38.5</td>
+                        <td>84</td>
+                        <td>United States</td>
+                        <td>Candy, pet
+                            food</td>
+                        <td>Food &everage</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>John Mars</td>
+                        <td>38.5</td>
+                        <td>88</td>
+                        <td>United States</td>
+                        <td>Candy, pet
+                            food</td>
+                        <td>Food &everage</td>
+                        <td>36</td>
+                    </tr>
+                    <tr>
+                        <td>Dieter Schwarz</td>
+                        <td>38</td>
+                        <td>84</td>
+                        <td>Germany</td>
+                        <td>Retail</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>37</td>
+                    </tr>
+                    <tr>
+                        <td>Li Ka-shing</td>
+                        <td>37.3</td>
+                        <td>95</td>
+                        <td>Hong Kong</td>
+                        <td>Diversified</td>
+                        <td>Diversified</td>
+                        <td>38</td>
+                    </tr>
+                    <tr>
+                        <td>Shiv Nadar</td>
+                        <td>36.9</td>
+                        <td>78</td>
+                        <td>India</td>
+                        <td>Software
+                            services</td>
+                        <td>Technology</td>
+                        <td>39</td>
+                    </tr>
+                    <tr>
+                        <td>Alain
+                            Wertheimer</td>
+                        <td>36.8</td>
+                        <td>75</td>
+                        <td>France</td>
+                        <td>Chanel</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>Gerard
+                            Wertheimer</td>
+                        <td>36.8</td>
+                        <td>73</td>
+                        <td>France</td>
+                        <td>Chanel</td>
+                        <td>Fashion &
+                            Retail</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>Ken Griffin</td>
+                        <td>36.4</td>
+                        <td>55</td>
+                        <td>United States</td>
+                        <td>Hedge funds</td>
+                        <td>Finance &
+                            Investments</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>MacKenzie
+                            Scott</td>
+                        <td>35.6</td>
+                        <td>53</td>
+                        <td>United States</td>
+                        <td>Amazon</td>
+                        <td>Technology</td>
+                        <td>43</td>
+                    </tr>
+                    <tr>
+                        <td>Thomas
+                            Peterffy</td>
+                        <td>34</td>
+                        <td>79</td>
+                        <td>United States</td>
+                        <td>Discountrokerage</td>
+                        <td>Finance &
+                            Investments</td>
+                        <td>44</td>
+                    </tr>
+                    <tr>
+                        <td>Reinhold
+                            Wuerth</td>
+                        <td>33.6</td>
+                        <td>88</td>
+                        <td>Germany</td>
+                        <td>Fasteners</td>
+                        <td>Manufacturing</td>
+                        <td>45</td>
+                    </tr>
+                    <tr>
+                        <td>William Ding</td>
+                        <td>33.5</td>
+                        <td>52</td>
+                        <td>China</td>
+                        <td>Online games</td>
+                        <td>Technology</td>
+                        <td>46</td>
+                    </tr>
+                    <tr>
+                        <td>Savitri Jindal
+                        </td>
+                        <td>33.5</td>
+                        <td>74</td>
+                        <td>India</td>
+                        <td>Steel</td>
+                        <td>Metals &
+                            Mining</td>
+                        <td>46</td>
+                    </tr>
+                    <tr>
+                        <td>Gianluigi
+                            Aponte</td>
+                        <td>33.1</td>
+                        <td>83</td>
+                        <td>Switzerland</td>
+                        <td>Shipping</td>
+                        <td>Logistics</td>
+                        <td>48</td>
+                    </tr>
+                    <tr>
+                        <td>Rafaela
+                            Aponte-Diamant</td>
+                        <td>33.1</td>
+                        <td>79</td>
+                        <td>Switzerland</td>
+                        <td>Shipping</td>
+                        <td>Logistics</td>
+                        <td>48</td>
+                    </tr>
+                    <tr>
+                        <td>Changpeng Zhao</td>
+                        <td>33</td>
+                        <td>47</td>
+                        <td>Canada</td>
+                        <td>Cryptocurrency
+                            exchange</td>
+                        <td>Finance &
+                            Investments</td>
+                        <td>50</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Самые богатые люди мира</p>
+    </footer>
+</body>
+
+</html>

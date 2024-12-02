@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Анкета абитуриента</h2>
+    <p>
+        
+    <form>
+        <label for="fio">Фамилия Имя:</label>
+        <input type="text" id="fio" placeholder="Иванов Иван">
+    </form>
+    </p>
+    <p>
+    <form>
+        <label for="date">Дата рождения:</label>
+        <input type="date" id="date" min="2000-01-01">
+    </form>
+    </p>
+    <table>
+        <tr>
+            <td colspan="2"><b>Экзамен</b></td>
+            <td><b>Балл</b></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><input type="text" placeholder="Математика" readonly></td>
+            <td><input type="text" placeholder="40"></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><input type="text" placeholder="Русский язык" readonly></td>
+            <td><input type="text" placeholder="40"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><input type="text" placeholder="Информатика"></td>
+            <td><input type="text" placeholder="40"></td>
+        </tr>
+    </table>
+    <p>
+        <form action="/send">
+            <label>Образовательная программа</label> <br>
+            <input type="checkbox" id=""> программная инженерия <br>
+            <input type="checkbox" id=""> прикладная информатика <br>
+            <input type="checkbox" id=""> прикладная математика и информатика
+        </form>
+    </p>
+    <p><button type="send">Отправить</button></p>
+</body>
+
+</html>

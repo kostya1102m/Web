@@ -1,0 +1,28 @@
+body {
+    margin: 0 10%;
+}
+.scroll-profile{
+    overflow-x: scroll;
+
+}
+div.scroll-profile > table{
+    border: 1px solid;
+}
+.scroll-profile img {
+    width: 200px;
+    height: 250px;
+}
+.profiles img {
+    width: 300px;
+    vertical-align: middle;
+
+}
+#quotes {
+    font-size: 1.4em;
+}
+.quotes-container
+{
+    display: block;
+    
+    justify-content: center;
+}

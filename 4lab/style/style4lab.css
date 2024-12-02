@@ -1,0 +1,52 @@
+h3{
+    text-align: center;
+}
+
+p {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  
+}
+p a {
+    text-decoration: none;
+    color: black;
+    background-color: lightgray;
+    padding: 10px;
+    margin: 15px;
+}
+p a:hover {
+    background-color: lightgreen;
+}
+.content{
+    background-color: lightgreen;
+    width: 85%;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+    margin: 15px auto;
+    justify-content: center;
+}
+.topic{
+    background-color: white;
+    margin: 15px;
+    padding: 15px;
+    position: relative; 
+}
+.topic b{
+    position: relative;
+
+}
+.topic.bullet b {
+    background-color: lightgreen; 
+}
+
+.topic.bullet b::before{
+    content: '\2713';
+    background-color: lightgreen; 
+
+}
