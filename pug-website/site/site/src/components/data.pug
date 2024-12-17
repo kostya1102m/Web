@@ -1,0 +1,166 @@
+block variables
+    - var title = 'Самые богатые люди'
+    -
+        var dictMenu = { 
+            'Главная': 'index.html', 
+            'Список': "graphics.html",  
+            'Меню_3': "#", 
+            'Меню_4': "#"
+        }
+    - 
+        var listImages_ = ['bill.jpeg', 'mark.webp', 'elon.webp', 'jeff.jpg']
+    -
+        var listLogos = ['amazon.jpg', 'facebook.jpg', 'microsoft.png', 'x.webp']
+    -
+        var listSections = [
+            {
+                'header': 'Warren Buffett',
+                'image': 'warren.jpg', 
+                'text': 'Уо́ррен Э́двард Ба́ффетт (англ. Warren Edward Buffett; род. 30 августа 1930, Омаха) — американский предприниматель. Один из крупнейших и наиболее известных в мире инвесторов с состоянием на июнь 2024 год в 139 миллиарда долларов (Forbes).В 11 лет Уоррен Баффетт впервые попробовал себя на бирже. Вместе со своей сестрой Дорис он купил три привилегированные акции Cities Service по 38,25 доллара за штуку.'
+            },
+            {
+                'header': 'Bernard Arnault',
+                'image': 'bernard.jpg', 
+                'text': 'Берна́р Арно́ (фр. Bernard Arnault; род. 5 марта 1949) — французский бизнесмен. Президент и CEO группы компаний Louis Vuitton Moët Hennessy. Forbes признал бизнесмена самым богатым человеком в мире в декабре 2022 года. Занял 2-е место в мире по величине личного капитала.В 1984 году внимание Арно привлёк недавно обанкротившийся текстильный конгломерат Boussac, который среди прочего владел и Домом моды Christian Dior. Методично превращая все ценные активы Boussac в деньги.'
+            }
+        ]
+    -
+        var listPersons = [
+            {
+                'image': 'bill.jpeg',
+                'div': 'bill'
+
+            },
+            {
+                'image': 'mark.webp',
+                'div': 'mark'
+
+            },
+            {
+                'image': 'elon.webp',
+                'div': 'elon'
+
+            },
+            {
+                'image': 'jeff.jpg',
+                'div': 'jeff'
+
+            }
+        ]
+    -
+        var listLogosSections = [
+            {
+                'image': 'amazon.jpg',
+                'text': 'Amazon'
+
+            },
+            {
+                'image': 'facebook.jpg',
+                'text': 'Facebook'
+
+            },
+            {
+                'image': 'microsoft.png',
+                'text': 'Microsoft'
+
+            },
+            {
+                'image': 'x.webp',
+                'text': 'X.com'
+
+            }
+        ]
+        var structures = [
+            {
+                menuItem: "Билл Гейтс",
+                pict: "bill.jpeg",
+                firstP: `Гейтс родился 28 октября 1955 года в Сиэтле (штат Вашингтон), в семье корпоративного адвоката
+                            Уильяма Генри Гейтса II и члена совета директоров First Interstate Bank, Pacific Northwest
+                            Bell
+                            и национального совета USWest, United Way Мэри Максвелл Гейтс. Его прадедушка был мэром и
+                            сенатором, а дедушка — вице-президентом Национального банка.`,
+                secondP: `Гейтс учился в самой привилегированной школе Сиэтла «Лейксайд», где он смог развить свои
+                            навыки
+                            программирования на школьном мини-компьютере. В тринадцать лет Билл написал свою первую
+                            программу — игру «Крестики-нолики» на языке программирования BASIC. В восьмом классе на
+                            занятиях
+                            по программированию, он познакомился с десятиклассником Полом Алленом. Со своими друзьями.`
+            },
+            {
+                firstP: `Иногда возникает необходимость сравнить самые крупные состояния мира по различным показателям — размеру активов, источникам доходов, инвестиционным портфелям и другим важным аспектам. Однако найти простую таблицу, где были бы собраны все эти данные о самых богатых людях мира, оказывается непросто.`,
+                secondP: `Именно поэтому мы создали эту таблицу, которая поможет вам быстро и удобно разобраться в этом вопросе.`
+            },
+            {
+                firstP: 'Amazon',
+                secondP: 'Facebook',
+                thirdP: 'Microsoft',
+                fourthP: 'X.com'
+            }
+        ]
+
+    - const headers = ['Имя', 'Стоимость чистых активов (млрд USD)', 'Возраст', 'Страна', 'Источник доходов', 'Индустрия', 'Поцизия в Forbes']
+    - 
+        const data = [
+            ['Bernard Arnault', '233', '75', 'France', 'LVMH', 'Fashion and Retail', '1'],
+            ['Elon Musk', '195', '52', 'United States', 'Tesla, SpaceX', 'Automotive', '2'],
+            ['Jeff Bezos', '194', '60', 'United States', 'Amazon', 'Technology', '3'],
+            ['Mark Zuckerberg', '177', '39', 'United States', 'Facebook', 'Technology', '4'],
+            ['Larry Ellison', '141', '79', 'United States', 'Oracle', 'Technology', '5'],
+            ['Warren Buffett', '133', '93', 'United States', 'Berkshire Hathaway', 'Finance and Investments', '6'],
+            ['Bill Gates', '128', '68', 'United States', 'Microsoft', 'Technology', '7'],
+            ['Steve Ballmer', '121', '68', 'United States', 'Microsoft', 'Technology', '8'],
+            ['Mukesh Ambani', '116', '66', 'India', 'Diversified', 'Diversified', '9'],
+            ['Larry Page', '114', '51', 'United States', 'Google', 'Technology', '10'],
+            ['Sergey Brin', '110', '50', 'United States', 'Google', 'Technology', '11'],
+            ['Michael Bloomberg', '106', '82', 'United States', 'Bloomberg LP', 'Finance and Investments', '12'], 
+            ['Amancio Ortega', '103', '88', 'Spain', 'Zara', 'Fashion and Retail', '13'], 
+            ['Carlos Slim Helu', '102', '84', 'Mexico', 'Telecom', 'Telecom', '14'], 
+            ['Francoiseettencourt Meyers', '99.5', '70', 'France', "L'Oréal", 'Fashion and Retail', '15'], 
+            ['Michael Dell', '91', '59', 'United States', 'Dell Technologies', 'Technology', '16'], 
+            ['Gautam Adani', '84', '61', 'India', 'Infrastructure, commodities', 'Diversified', '17'], 
+            ['Jim Walton', '78.4', '75', 'United States', 'Walmart', 'Fashion and Retail', '18'], 
+            ['Rob Walton', '77.4', '79', 'United States', 'Walmart', 'Fashion and Retail', '19'], 
+            ['Jensen Huang', '77', '61', 'United States', 'Semiconductors', 'Technology', '20'], 
+            ['Alice Walton', '72.3', '74', 'United States', 'Walmart', 'Fashion and Retail', '21'], 
+            ['David Thomson', '67.8', '66', 'Canada', 'Media', 'Media and Entertainment', '22'], 
+            ['Julia Koch', '64.3', '61', 'United States', 'Koch Industries', 'Diversified', '23'], 
+            ['Zhong Shanshan', '62.3', '69', 'China', 'Beverages, pharmaceuticals', 'Food and beverage', '24'], 
+            ['Charles Koch', '58.5', '88', 'United States', 'Koch Industries', 'Diversified', '25'], 
+            ['Giovanni Ferrero', '43.8', '59', 'Italy', 'Nutella, chocolates', 'Food beverage', '26'], 
+            ['Prajogo Pangestu', '43.4', '79', 'Indonesia', 'Petrochemicals, energy', 'Diversified', '27'], 
+            ['Zhang Yiming', '43.4', '40', 'China', 'TikTok', 'Technology', '27'], 
+            ['Tadashi Yanai', '42.8', '75', 'Japan', 'Fashion retail', 'Fashion and Retail', '29'], 
+            ['Phil Knight', '40.9', '86', 'United States', 'Nike', 'Fashion and Retail', '30'], 
+            ['Mark Mateschitz', '39.6', '31', 'Austria', 'Red Bull', 'Food beverage', '31'], 
+            ['Klaus-Michael Kuehne', '39.2', '86', 'Germany', 'Shipping', 'Logistics', '32'], 
+            ['Colin Huang', '38.9', '44', 'China', 'E-commerce', 'Technology', '33'], 
+            ['Stephen Schwarzman', '38.8', '77', 'United States', 'Investments', 'Finance and Investments', '34'], 
+            ['Jacqueline Mars', '38.5', '84', 'United States', 'Candy, pet food', 'Food beverage', '35'], 
+            ['John Mars', '38.5', '88', 'United States', 'Candy, pet food', 'Food beverage', '36'], 
+            ['Dieter Schwarz', '38', '84', 'Germany', 'Retail', 'Fashion and Retail', '37'], 
+            ['Li Ka-shing', '37.3', '95', 'Hong Kong', 'Diversified', 'Diversified', '38'], 
+            ['Shiv Nadar', '36.9', '78', 'India', 'Software services', 'Technology', '39'], 
+            ['Alain Wertheimer', '36.8', '75', 'France', 'Chanel', 'Fashion and Retail', '40'], 
+            ['Gerard Wertheimer', '36.8', '73', 'France', 'Chanel', 'Fashion and Retail', '40'], 
+            ['Ken Griffin', '36.4', '55', 'United States', 'Hedge funds', 'Finance and Investments', '42'], 
+            ['MacKenzie Scott', '35.6', '53', 'United States', 'Amazon', 'Technology', '43'], 
+            ['Thomas Peterffy', '34', '79', 'United States', 'Discountrokerage', 'Finance and Investments', '44'], 
+            ['Reinhold Wuerth', '33.6', '88', 'Germany', 'Fasteners', 'Manufacturing', '45'], 
+            ['William Ding', '33.5', '52', 'China', 'Online games', 'Technology', '46'], 
+            ['Savitri Jindal', '33.5', '74', 'India', 'Steel', 'Metals and Mining', '46'], 
+            ['Gianluigi Aponte', '33.1', '83', 'Switzerland', 'Shipping', 'Logistics', '48'], 
+            ['Rafaela Aponte-Diamant', '33.1', '79', 'Switzerland', 'Shipping', 'Logistics', '48'],
+            ['Changpeng Zhao', '33', '47', 'Canada', 'Cryptocurrency exchange', 'Finance and Investments', '50']
+        ]
+
+    - 
+        const sortOptions = [
+            { value: '0', label: 'Нет', selected: true },
+            { value: '1', label: 'Имя' },
+            { value: '2', label: 'Стоимость чистых активов' },
+            { value: '3', label: 'Возраст' },
+            { value: '4', label: 'Страна' },
+            { value: '5', label: 'Источник доходов' },
+            { value: '6', label: 'Индустрия' },
+            { value: '7', label: 'Позиция в Forbes' }
+        ]
