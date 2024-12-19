@@ -1,0 +1,31 @@
+extends template
+
+block menuItem
+    +createMenu(dictMenu, 'Список')
+
+block content
+
+    p= structures[1].firstP
+    p= structures[1].secondP
+
+    +graphSection([
+        {radioValue: 'w', radioLabel: 'Индустрия', checkboxValue: '0', checkboxLabel: 'Максимальная стоимость активов'},
+        {radioValue: 'w', radioLabel: 'Страна', checkboxValue: '1', checkboxLabel: 'Минимальная стоимость активов'},
+    ])
+
+    +filterForm([
+        {name: 'country', label: 'Страна', type: 'text', id: 'filter-country'},
+        {name: 'industry', label: 'Индустрия', type: 'text', id: 'filter-industry'},
+        {name: 'income', label: 'Источник доходов', type: 'range', id: 'filter-income'},
+        {name: 'age', label: 'Возраст', type: 'range', id: 'filter-age'},
+        {name: 'assets', label: 'Активы', type: 'range', id: 'filter-assets'},
+        {name: 'forbes', label: 'Позиция в Forbes', type: 'range', id: 'filter-forbes'}
+    ])
+
+    +sortSection([
+        { name: 'Первый уровень', selectName: 'first level', checkboxName: 'first_level' },
+        { name: 'Второй уровень', selectName: 'second level', checkboxName: 'second_level' },
+        { name: 'Третий уровень', selectName: 'third level', checkboxName: 'third_level' }
+    ])
+
+    +tableComponent(headers, data)

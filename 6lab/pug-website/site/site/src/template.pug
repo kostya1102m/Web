@@ -1,0 +1,20 @@
+include components/mixin.pug
+include components/data.pug
+
+doctype html
+html(lang="ru")
+    head
+        title #{title}
+    body
+        header
+            .title #{title}
+            .menu
+                ul.menu__ul
+                    block menuItem
+                        +createMenu(dictMenu, 'Главная')
+
+        block content
+
+        block footer
+            footer
+                h4 &copy; Михайлов К.Н., Б9122-09.03.04, 2024-2025

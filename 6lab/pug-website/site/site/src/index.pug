@@ -1,0 +1,23 @@
+extends template
+
+block content
+  .content__gallery
+    each item in listImages_
+      +galleryItem(item,"info.html")
+
+  .content__logo
+    each item in listLogosSections
+      div
+        img(src= require("./logos/" + item.image))
+        p= item.text
+
+  .content__main
+    +personItem(listSections)
+
+  .content__blocks
+    .block-1-1
+    .block-1-2 
+    .block-1-3 
+    .block-2-1 
+    .block-2-2 
+    .block-2-3
